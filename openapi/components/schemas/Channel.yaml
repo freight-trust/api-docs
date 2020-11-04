@@ -1,0 +1,30 @@
+required:
+  - name
+  - title
+type: object
+properties:
+  createdAt:
+    allOf:
+      - $ref: ./OffsetDateTime.yaml
+      - description: Date and time the record was created
+        readOnly: true
+  name:
+    title: Channel name
+    description: Name to uniquely identify the channel. Read-only for existing records
+    type: string
+    readOnly: true
+  title:
+    title: Readable name for the record
+    maxLength: 255
+    pattern: \S
+    type: string
+    nullable: false
+  updatedAt:
+    allOf:
+      - $ref: ./OffsetDateTime.yaml
+      - description: Date and time the record was last updated
+        readOnly: true
+  uuid:
+    title: Unique system-generated identifier for the channel
+    type: string
+    readOnly: true

@@ -1,0 +1,61 @@
+post:
+  tags:
+    - Transactions
+  summary: Submit an EDI interchange for validation and conversion (Persistent)
+  description: >
+    Submit an EDI interchange for validation and conversion to a back-end
+    application. This operation
+
+    accepts a well-formed EDI interchange and (when successfully translated)
+    responds with an
+
+    EDI format corresponding to the input (e.g. an X12 `997`). The transformed
+    interchange is written to
+
+    local server storage (other other queuing system) to be retrieved by or
+    forwarded to a back-end
+
+    application for further processing.
+  requestBody:
+    description: EDI payload in either X12 or EDIFACT format
+    content:
+      application/EDI-X12:
+        schema:
+          description: Properly formatted EDI interchange
+          type: object
+      application/EDIFACT:
+        schema:
+          description: Properly formatted EDI interchange
+          type: object
+    required: true
+  responses:
+    '202':
+      description: Accepted
+      headers:
+        Location:
+          description: Location where the converted transaction has been stored
+          x-stlye: simple
+          schema:
+            format: uri
+            type: string
+      content:
+        application/EDI-X12:
+          schema:
+            $ref: ../components/schemas/AcknowledgementEDI.yaml
+        application/EDIFACT:
+          schema:
+            $ref: ../components/schemas/AcknowledgementEDI.yaml
+    '400':
+      description: Bad Request
+      content:
+        application/EDI-X12:
+          schema:
+            $ref: ../components/schemas/AcknowledgementEDI.yaml
+        application/EDIFACT:
+          schema:
+            $ref: ../components/schemas/AcknowledgementEDI.yaml
+        text/plain:
+          schema:
+            description: Message describing the nature of the error
+            type: string
+  parameters: []

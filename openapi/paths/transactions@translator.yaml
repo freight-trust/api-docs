@@ -1,0 +1,61 @@
+post:
+  tags:
+    - Transactions
+  summary: Translate an EDI interchange (Persistent)
+  description: >
+    Translate an EDI interchange and persist meta information and validation
+    status in history.
+
+    This operation accepts a well-formed EDI interchange and (when successfully
+    translated) responds
+
+    with an XML representation of the interchange. The `Link` header includes a
+    URI that may be used
+
+    for retrieval of validation/status information pertaining to the
+    interchange.
+  requestBody:
+    description: EDI payload in either X12 or EDIFACT format
+    content:
+      application/EDI-X12:
+        schema:
+          description: Properly formatted EDI interchange
+          type: object
+      application/EDIFACT:
+        schema:
+          description: Properly formatted EDI interchange
+          type: object
+    required: true
+  responses:
+    '200':
+      description: OK - Interchange translated without fatal errors
+      headers:
+        Link:
+          description: >-
+            Location to retrieve the associated acknowledgement/validation
+            information associated with the request.
+          x-stlye: simple
+          schema:
+            type: string
+      content:
+        application/json:
+          schema:
+            description: JSON formatted interchange
+            type: object
+        application/xml:
+          schema:
+            description: XML formatted interchange
+            type: object
+    '400':
+      description: >-
+        Bad Request - Interchange translation encounted fatal errors with the
+        input
+      headers:
+        Link:
+          description: >-
+            Location to retrieve the associated acknowledgement/validation
+            information associated with the request.
+          x-stlye: simple
+          schema:
+            type: string
+  parameters: []

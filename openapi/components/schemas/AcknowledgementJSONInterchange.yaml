@@ -1,0 +1,34 @@
+type: object
+properties:
+  agencyCode:
+    type: string
+  controlReference:
+    type: string
+  errors:
+    type: array
+    items:
+      $ref: ./AcknowledgementJSONSegmentError.yaml
+  industryCode:
+    type: string
+  release:
+    type: string
+  version:
+    type: string
+  groups:
+    description: Present only when the submitted interchange contains functional groups
+    type: array
+    items:
+      $ref: ./AcknowledgementJSONGroup.yaml
+    nullable: true
+  receiver:
+    $ref: ./AcknowledgementJSONAddressee.yaml
+  sender:
+    $ref: ./AcknowledgementJSONAddressee.yaml
+  transactions:
+    description: >-
+      Present only when the submitted interchange contains transactions directly
+      within the interchange
+    type: array
+    items:
+      $ref: ./AcknowledgementJSONTransaction.yaml
+    nullable: true

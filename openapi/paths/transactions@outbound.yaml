@@ -1,0 +1,41 @@
+post:
+  tags:
+    - Transactions
+  summary: Submit an XML format interchange for conversion to EDI (Persistent)
+  description: >
+    Submit an XML interchange for validation and conversion to EDI. This
+    operation
+
+    accepts a well-formed XML interchange and (when successfully translated)
+    responds with an
+
+    EDI format corresponding to the input. Information about the interchange
+    (transaction control
+
+    numbers, types of transactions, etc.) is persisted to the Fresno database
+    for tracking and
+
+    to support acknowledgement confirmation.
+  requestBody:
+    description: XML payload to be converted to EDI
+    content:
+      application/xml:
+        schema:
+          description: Properly formatted XML interchange
+          type: object
+    required: true
+  responses:
+    '200':
+      description: OK
+      content:
+        application/EDI-X12:
+          schema:
+            description: EDI formatted interchange
+            type: object
+        application/EDIFACT:
+          schema:
+            description: EDI formatted interchange
+            type: object
+    '400':
+      description: Bad Request
+  parameters: []

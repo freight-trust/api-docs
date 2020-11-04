@@ -1,0 +1,104 @@
+openapi: 3.0.3
+info:
+  title: EDI Management API
+  description: 'EDI validation, translation, and management system.'
+  version: 1.0.9
+  contact:
+    name: helpdesk
+    email: contact@freighttrust.com
+    url: freighttrust.com/helpdesk
+  license:
+    name: SSPL-1.0
+    url: 'https://github.com/freight-trust/legal/blob/master/src/used/SSPL-1.LICENSE'
+  termsOfService: freighttrust.com/legal/tos
+security:
+  - APIKeyScheme: []
+    OAuth2Scheme: []
+tags:
+  - name: Transactions
+    description: >-
+      Perform EDI validation and translation to XML, or translation from XML to
+      EDI
+  - name: History
+    description: Channel transaction history
+  - name: Administration
+    description: Channel maintenance and configuration
+  - name: Configuration
+    description: Configuration information for a web-based user interface
+  - name: Schema Maintenance
+    description: Define and review the EDI schemas available in the system
+paths:
+  /config.js:
+    $ref: paths/config.js.yaml
+  /controls/channels:
+    $ref: paths/controls@channels.yaml
+  '/controls/channels/{id}':
+    $ref: 'paths/controls@channels@{id}.yaml'
+  /controls/group-controls:
+    $ref: paths/controls@group-controls.yaml
+  '/controls/group-controls/{id}':
+    $ref: 'paths/controls@group-controls@{id}.yaml'
+  /controls/interchange-controls:
+    $ref: paths/controls@interchange-controls.yaml
+  '/controls/interchange-controls/{id}':
+    $ref: 'paths/controls@interchange-controls@{id}.yaml'
+  /controls/transaction-controls:
+    $ref: paths/controls@transaction-controls.yaml
+  '/controls/transaction-controls/{id}':
+    $ref: 'paths/controls@transaction-controls@{id}.yaml'
+  /history/groups:
+    $ref: paths/history@groups.yaml
+  '/history/groups/{id}':
+    $ref: 'paths/history@groups@{id}.yaml'
+  /history/interchanges:
+    $ref: paths/history@interchanges.yaml
+  '/history/interchanges/{id}':
+    $ref: 'paths/history@interchanges@{id}.yaml'
+  '/history/interchanges/{interchangeId}/relationships/acknowledgement':
+    $ref: >-
+      paths/history@interchanges@{interchangeId}@relationships@acknowledgement.yaml
+  /history/transactions:
+    $ref: paths/history@transactions.yaml
+  '/history/transactions/{id}':
+    $ref: 'paths/history@transactions@{id}.yaml'
+  /schemas:
+    $ref: paths/schemas.yaml
+  /schemas/control:
+    $ref: paths/schemas@control.yaml
+  /schemas/transaction:
+    $ref: paths/schemas@transaction.yaml
+  '/schemas/{standard}/{type}/{version}/{file}':
+    $ref: 'paths/schemas@{standard}@{type}@{version}@{file}.yaml'
+  /transactions/inbound:
+    $ref: paths/transactions@inbound.yaml
+  /transactions/outbound:
+    $ref: paths/transactions@outbound.yaml
+  /transactions/translator:
+    $ref: paths/transactions@translator.yaml
+  /transactions/validator:
+    $ref: paths/transactions@validator.yaml
+components:
+  securitySchemes:
+    APIKeyScheme:
+      type: apiKey
+      description: API Key from channel configuration
+      name: X-FT-API-Key
+      in: header
+    OAuth2Scheme:
+      type: oauth2
+      description: Token-based auth using OAuth2
+      flows:
+        clientCredentials:
+          tokenUrl: /token
+          scopes: {}
+        authorizationCode:
+          authorizationUrl: /authorize
+          tokenUrl: /token
+          scopes: {}
+externalDocs:
+  description: ft-docs.netlify.app
+  url: docs.freighttrust.com
+servers:
+  - url: 'http://ec2-52-53-248-65.us-west-1.compute.amazonaws.com:8080/'
+    description: dev
+    variables: {}

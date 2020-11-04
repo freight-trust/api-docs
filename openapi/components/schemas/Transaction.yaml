@@ -1,0 +1,32 @@
+type: object
+properties:
+  ackCode:
+    type: string
+  agencyCode:
+    type: string
+  channel:
+    $ref: ./Channel.yaml
+  controlCount:
+    type: string
+  controlReference:
+    type: string
+  createdAt:
+    $ref: ./OffsetDateTime.yaml
+  industryCode:
+    type: string
+  release:
+    type: string
+  updatedAt:
+    $ref: ./OffsetDateTime.yaml
+  uuid:
+    type: string
+  version:
+    type: string
+  errors:
+    type: array
+    items:
+      $ref: ./SyntaxError.yaml
+  type:
+    type: string
+  controlEntity:
+    $ref: ./TransactionControl.yaml

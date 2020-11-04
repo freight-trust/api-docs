@@ -1,0 +1,25 @@
+get:
+  tags:
+    - Schema Maintenance
+  parameters:
+    - name: standard
+      in: query
+      schema:
+        type: string
+    - name: type
+      in: query
+      schema:
+        type: string
+    - name: version
+      in: query
+      schema:
+        type: string
+  responses:
+    default:
+      description: >-
+        Retrieve a transaction JSON schema for the given standard, type, and
+        version
+      content:
+        application/schema+json:
+          schema:
+            type: object

@@ -1,0 +1,22 @@
+get:
+  tags:
+    - History
+  summary: Retrieve a list of interchanges
+  parameters:
+    - name: page
+      in: query
+      description: Page number
+      required: true
+      schema:
+        format: int32
+        default: 1
+        type: integer
+  responses:
+    '200':
+      description: OK; Record listing retrieved
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: ../components/schemas/Interchange.yaml

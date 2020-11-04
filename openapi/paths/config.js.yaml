@@ -1,0 +1,13 @@
+get:
+  tags:
+    - Configuration
+  summary: Retrieve JavaScript module for front end configuration
+  responses:
+    '200':
+      description: OK
+      content:
+        text/javascript:
+          schema:
+            type: string
+  security: []
+  parameters: []

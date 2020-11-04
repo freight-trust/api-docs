@@ -1,0 +1,10 @@
+type: oauth2
+description: Token-based auth using OAuth2
+flows:
+  clientCredentials:
+    tokenUrl: /token
+    scopes: {}
+  authorizationCode:
+    authorizationUrl: /authorize
+    tokenUrl: /token
+    scopes: {}

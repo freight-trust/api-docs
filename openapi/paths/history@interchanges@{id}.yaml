@@ -1,0 +1,19 @@
+get:
+  tags:
+    - History
+  summary: Retrieve an interchange by identifier
+  parameters:
+    - name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK; Record retrieved
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/Interchange.yaml
+    '404':
+      $ref: ../components/responses/RecordNotFound.yaml

@@ -1,0 +1,24 @@
+type: object
+properties:
+  componentPosition:
+    format: int32
+    type: integer
+  createdAt:
+    $ref: ./OffsetDateTime.yaml
+  elementOccurrence:
+    format: int32
+    type: integer
+  elementPosition:
+    format: int32
+    type: integer
+  errorCode:
+    type: string
+  loopCode:
+    type: string
+  referenceCode:
+    type: string
+  segmentPosition:
+    format: int32
+    type: integer
+  segmentTag:
+    type: string

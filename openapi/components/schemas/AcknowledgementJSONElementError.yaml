@@ -1,0 +1,13 @@
+type: object
+properties:
+  component:
+    format: int32
+    type: integer
+  element:
+    format: int32
+    type: integer
+  occurrence:
+    format: int32
+    type: integer
+  type:
+    type: string

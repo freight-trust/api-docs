@@ -1,0 +1,54 @@
+post:
+  tags:
+    - Transactions
+  summary: Validate an EDI interchange (Persistent)
+  description: >
+    Validate an EDI interchange and persist meta information and validation
+    status in history.
+
+    This operation accepts a well-formed EDI interchange and responds with
+    either an EDI format
+
+    corresponding to the input or a JSON format describing the result of
+    validation.
+  requestBody:
+    description: EDI payload in either X12 or EDIFACT format
+    content:
+      application/EDI-X12:
+        schema:
+          description: Properly formatted EDI interchange
+          type: object
+      application/EDIFACT:
+        schema:
+          description: Properly formatted EDI interchange
+          type: object
+    required: true
+  responses:
+    '200':
+      description: OK - Interchange validated without fatal errors
+      content:
+        application/EDIFACT:
+          schema:
+            $ref: ../components/schemas/AcknowledgementEDI.yaml
+        application/EDI-X12:
+          schema:
+            $ref: ../components/schemas/AcknowledgementEDI.yaml
+        application/json:
+          schema:
+            $ref: ../components/schemas/AcknowledgementJSON.yaml
+    '400':
+      description: >-
+        Bad Request - Interchange validation encounted fatal errors with the
+        input
+      content:
+        application/EDIFACT:
+          schema:
+            $ref: ../components/schemas/AcknowledgementEDI.yaml
+        application/EDI-X12:
+          schema:
+            $ref: ../components/schemas/AcknowledgementEDI.yaml
+        text/plain:
+          schema:
+            description: Message describing the nature of the error
+            type: string
+  parameters: []

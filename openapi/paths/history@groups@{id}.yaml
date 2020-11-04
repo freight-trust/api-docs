@@ -1,0 +1,15 @@
+get:
+  tags:
+    - History
+  summary: Retrieve a functional group by identifier
+  parameters:
+    - $ref: ../components/parameters/id.yaml
+  responses:
+    '200':
+      description: OK; Record retrieved
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/Group.yaml
+    '404':
+      $ref: ../components/responses/RecordNotFound.yaml

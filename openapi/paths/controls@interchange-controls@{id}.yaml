@@ -1,0 +1,47 @@
+get:
+  tags:
+    - Administration
+  summary: Retrieve an interchange control by ID
+  parameters:
+    - name: id
+      in: path
+      description: Interchange control ID
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK; Record retrieved
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/InterchangeControl.yaml
+    '404':
+      $ref: ../components/responses/RecordNotFound.yaml
+put:
+  tags:
+    - Administration
+  summary: Updates an interchange control
+  parameters:
+    - name: id
+      in: path
+      description: Interchange control ID
+      required: true
+      schema:
+        type: string
+  requestBody:
+    description: ''
+    content:
+      application/json:
+        schema:
+          $ref: ../components/schemas/InterchangeControl.yaml
+    required: true
+  responses:
+    '200':
+      description: OK; Record updated
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/InterchangeControl.yaml
+    '404':
+      $ref: ../components/responses/RecordNotFound.yaml

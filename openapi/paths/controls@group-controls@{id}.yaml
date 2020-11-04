@@ -1,0 +1,37 @@
+get:
+  tags:
+    - Administration
+  summary: Retrieve a group control by identifier
+  parameters:
+    - $ref: ../components/parameters/id.yaml
+  responses:
+    '200':
+      description: OK; Record retrieved
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/GroupControl.yaml
+    '404':
+      $ref: ../components/responses/RecordNotFound.yaml
+put:
+  tags:
+    - Administration
+  summary: Updates a group control
+  parameters:
+    - $ref: ../components/parameters/id.yaml
+  requestBody:
+    description: ''
+    content:
+      application/json:
+        schema:
+          $ref: ../components/schemas/GroupControl.yaml
+    required: true
+  responses:
+    '200':
+      description: OK; Record updated
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/GroupControl.yaml
+    '404':
+      $ref: ../components/responses/RecordNotFound.yaml

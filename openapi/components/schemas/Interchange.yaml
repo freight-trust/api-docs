@@ -1,0 +1,65 @@
+type: object
+properties:
+  ackCode:
+    type: string
+  agencyCode:
+    type: string
+  channel:
+    $ref: ./Channel.yaml
+  controlCount:
+    type: string
+  controlReference:
+    type: string
+  createdAt:
+    $ref: ./OffsetDateTime.yaml
+  industryCode:
+    type: string
+  release:
+    type: string
+  updatedAt:
+    $ref: ./OffsetDateTime.yaml
+  uuid:
+    type: string
+  version:
+    type: string
+  ackRequested:
+    type: string
+  componentSeparator:
+    type: string
+  createTimestamp:
+    $ref: ./LocalDateTime.yaml
+  decimalMark:
+    type: string
+  direction:
+    type: string
+  elementSeparator:
+    type: string
+  errors:
+    type: array
+    items:
+      $ref: ./SyntaxError.yaml
+  interchangeControl:
+    $ref: ./InterchangeControl.yaml
+  messageDigest:
+    type: string
+  receiverId:
+    type: string
+  receiverIdType:
+    type: string
+  releaseCharacter:
+    type: string
+  repetitionSeparator:
+    type: string
+  segmentTerminator:
+    type: string
+  senderId:
+    type: string
+  senderIdType:
+    type: string
+  testIndicator:
+    type: string
+  controlEntity:
+    $ref: ./InterchangeControl.yaml
+  errorCount:
+    format: int32
+    type: integer

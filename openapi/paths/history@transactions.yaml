@@ -1,0 +1,32 @@
+get:
+  tags:
+    - History
+  summary: >-
+    Retrieve a list of transactions for a particular interchange, group, or
+    date/time range
+  parameters:
+    - name: dateFrom
+      in: query
+      schema:
+        $ref: ../components/schemas/OffsetDateTime.yaml
+    - name: dateThru
+      in: query
+      schema:
+        $ref: ../components/schemas/OffsetDateTime.yaml
+    - name: groupId
+      in: query
+      schema:
+        type: string
+    - name: interchangeId
+      in: query
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK; Record listing retrieved
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: ../components/schemas/Transaction.yaml

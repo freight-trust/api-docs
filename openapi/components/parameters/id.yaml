@@ -1,0 +1,6 @@
+name: id
+in: path
+description: Record identifier
+required: true
+schema:
+  type: string

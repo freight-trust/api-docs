@@ -1,0 +1,25 @@
+get:
+  tags:
+    - History
+  summary: Retrieve an interchange acknowledgement by identifier
+  parameters:
+    - name: interchangeId
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK; Record retrieved
+      content:
+        application/EDIFACT:
+          schema:
+            $ref: ../components/schemas/AcknowledgementEDI.yaml
+        application/EDI-X12:
+          schema:
+            $ref: ../components/schemas/AcknowledgementEDI.yaml
+        application/json:
+          schema:
+            $ref: ../components/schemas/AcknowledgementJSON.yaml
+    '404':
+      $ref: ../components/responses/RecordNotFound.yaml

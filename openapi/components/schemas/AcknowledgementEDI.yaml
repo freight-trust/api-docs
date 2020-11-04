@@ -1,0 +1,5 @@
+description: |
+  An EDI acknowledgement specific to the request body submitted.
+  For example, a 997 for X12 requests or a CONTRL for EDIFACT requests.
+type: object
+nullable: true

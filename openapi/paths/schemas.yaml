@@ -1,0 +1,61 @@
+get:
+  tags:
+    - Schema Maintenance
+  summary: Retrieve a list of transaction schemas known to the system
+  responses:
+    '200':
+      description: OK
+  parameters: []
+post:
+  tags:
+    - Schema Maintenance
+  summary: Create a new transaction schema to be used for EDI validation
+  requestBody:
+    content:
+      multipart/form-data:
+        schema:
+          type: object
+          properties:
+            standard:
+              pattern: \S
+              type: string
+              nullable: false
+            agencyCode:
+              pattern: \S
+              type: string
+              nullable: false
+            version:
+              pattern: \S
+              type: string
+              nullable: false
+            release:
+              default: ''
+              type: string
+            industryCode:
+              default: ''
+              type: string
+            transactionCode:
+              pattern: \S
+              type: string
+              nullable: false
+            senderIdType:
+              default: ''
+              type: string
+            senderId:
+              default: ''
+              type: string
+            receiverIdType:
+              default: ''
+              type: string
+            receiverId:
+              default: ''
+              type: string
+            file:
+              format: binary
+              type: string
+  responses:
+    '201':
+      description: Created
+    '409':
+      $ref: ../components/responses/DuplicateRecordConflict.yaml
+  parameters: []

@@ -1,0 +1,62 @@
+get:
+  tags:
+    - Schema Maintenance
+  parameters:
+    - name: file
+      in: path
+      required: true
+      schema:
+        type: string
+    - name: standard
+      in: path
+      required: true
+      schema:
+        type: string
+    - name: type
+      in: path
+      required: true
+      schema:
+        type: string
+    - name: version
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    default:
+      description: Fetch the XML for a specific transaction schema
+      content:
+        application/xml:
+          schema:
+            type: object
+        application/json:
+          schema:
+            type: object
+delete:
+  tags:
+    - Schema Maintenance
+  parameters:
+    - name: file
+      in: path
+      required: true
+      schema:
+        type: string
+    - name: standard
+      in: path
+      required: true
+      schema:
+        type: string
+    - name: type
+      in: path
+      required: true
+      schema:
+        type: string
+    - name: version
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    default:
+      description: Remove a specific transaction schema
+      content: {}

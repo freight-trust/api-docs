@@ -1,0 +1,13 @@
+type: object
+properties:
+  errors:
+    type: array
+    items:
+      $ref: ./AcknowledgementJSONElementError.yaml
+  position:
+    format: int32
+    type: integer
+  segment:
+    type: string
+  type:
+    type: string

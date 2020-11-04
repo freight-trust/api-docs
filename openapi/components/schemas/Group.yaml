@@ -1,0 +1,42 @@
+type: object
+properties:
+  ackCode:
+    type: string
+  agencyCode:
+    type: string
+  channel:
+    $ref: ./Channel.yaml
+  controlCount:
+    type: string
+  controlReference:
+    type: string
+  createdAt:
+    $ref: ./OffsetDateTime.yaml
+  industryCode:
+    type: string
+  release:
+    type: string
+  updatedAt:
+    $ref: ./OffsetDateTime.yaml
+  uuid:
+    type: string
+  version:
+    type: string
+  createTimestamp:
+    $ref: ./LocalDateTime.yaml
+  errors:
+    type: array
+    items:
+      $ref: ./SyntaxError.yaml
+  receiverId:
+    type: string
+  receiverIdType:
+    type: string
+  senderId:
+    type: string
+  senderIdType:
+    type: string
+  type:
+    type: string
+  controlEntity:
+    $ref: ./GroupControl.yaml

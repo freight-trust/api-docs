@@ -1,0 +1,140 @@
+required:
+  - title
+  - version
+  - localId
+  - remoteId
+  - standard
+  - testIndicator
+type: object
+properties:
+  agencyCode:
+    description: Agency code of the standards body that defines the schema of this record
+    maxLength: 4
+    type: string
+  channelId:
+    description: 'Channel identifier. Required for new records, otherwise read-only'
+    type: string
+  createdAt:
+    allOf:
+      - $ref: ./OffsetDateTime.yaml
+      - description: Date and time the record was created
+        readOnly: true
+  industryCode:
+    description: Industry identifier (implementation version) of the standard
+    maxLength: 255
+    type: string
+  lastControlNumber:
+    format: int64
+    description: >-
+      The previous control number used for outbound data. Defaults to `0` for
+      new records.
+    type: integer
+  release:
+    description: Release (sub-version) of the standard
+    maxLength: 255
+    type: string
+  title:
+    title: Readable name for the record
+    maxLength: 255
+    pattern: \S
+    type: string
+    nullable: false
+  updatedAt:
+    allOf:
+      - $ref: ./OffsetDateTime.yaml
+      - description: Date and time the record was last updated
+        readOnly: true
+  uuid:
+    title: Unique system-generated identifier for the control record
+    type: string
+    readOnly: true
+  version:
+    description: Version of the standard
+    maxLength: 255
+    pattern: \S
+    type: string
+    nullable: false
+  componentSeparator:
+    description: >-
+      Component element separator to be used for outbound interchanges. Default
+      value is dialect specific (EDIFACT/X12) if not specified.
+    maxLength: 1
+    type: string
+  decimalMark:
+    description: >-
+      Decimal character to be used for outbound interchanges. Not supported for
+      X12
+    maxLength: 1
+    type: string
+  elementSeparator:
+    description: >-
+      Element separator to be used for outbound interchanges. Default value is
+      dialect specific (EDIFACT/X12) if not specified.
+    maxLength: 1
+    type: string
+  localId:
+    description: >-
+      Used for the sender on output interchanges and the receiver on inbound
+      interchanges
+    maxLength: 255
+    pattern: \S
+    type: string
+    nullable: false
+  localIdType:
+    description: >-
+      Used for the sender on output interchanges and the receiver on inbound
+      interchanges. Optional for EDIFACT, required for X12
+    maxLength: 255
+    pattern: \S
+    type: string
+    nullable: false
+  releaseCharacter:
+    description: >-
+      Release character to be used for outbound interchanges. Default value is
+      dialect specific (EDIFACT/X12) if not specified.
+    maxLength: 1
+    type: string
+  remoteId:
+    description: >-
+      Used for the receiver on output interchanges and the sender on inbound
+      interchanges
+    maxLength: 255
+    pattern: \S
+    type: string
+    nullable: false
+  remoteIdType:
+    description: >-
+      Used for the receiver on output interchanges and the sender on inbound
+      interchanges. Optional for EDIFACT, required for X12
+    maxLength: 255
+    pattern: \S
+    type: string
+    nullable: false
+  repetitionSeparator:
+    description: >-
+      Repetition separator to be used for outbound interchanges. Default value
+      is dialect specific (EDIFACT/X12) if not specified.
+    maxLength: 1
+    type: string
+  segmentTerminator:
+    description: >-
+      Segment terminator to be used for outbound interchanges. Default value is
+      dialect specific (EDIFACT/X12) if not specified.
+    maxLength: 1
+    type: string
+  standard:
+    description: EDI standard
+    maxLength: 7
+    pattern: \S
+    enum:
+      - EDIFACT
+      - X12
+    type: string
+    nullable: false
+  testIndicator:
+    description: >-
+      Test indicator to be used for outbound interchanges. Value is dialect
+      specific (EDIFACT/X12). For example, X12 uses `P` and `T`, whereas EDIFACT
+      uses `1` through `5`.
+    maxLength: 1
+    type: string

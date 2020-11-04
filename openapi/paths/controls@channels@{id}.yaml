@@ -1,0 +1,42 @@
+get:
+  tags:
+    - Administration
+  summary: Retrieve a channel by unique identifier
+  parameters:
+    - name: id
+      in: path
+      description: Channel ID
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK; Record retrieved
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/Channel.yaml
+    '404':
+      $ref: ../components/responses/RecordNotFound.yaml
+put:
+  tags:
+    - Administration
+  summary: Update a channel
+  parameters:
+    - $ref: ../components/parameters/id.yaml
+  requestBody:
+    description: ''
+    content:
+      application/json:
+        schema:
+          $ref: ../components/schemas/Channel.yaml
+    required: true
+  responses:
+    '200':
+      description: OK; Record updated
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/Channel.yaml
+    '404':
+      $ref: ../components/responses/RecordNotFound.yaml

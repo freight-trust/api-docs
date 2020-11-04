@@ -1,0 +1,27 @@
+type: object
+properties:
+  agencyCode:
+    type: string
+  controlReference:
+    type: string
+  errors:
+    type: array
+    items:
+      $ref: ./AcknowledgementJSONSegmentError.yaml
+  industryCode:
+    type: string
+  release:
+    type: string
+  version:
+    type: string
+  receiver:
+    $ref: ./AcknowledgementJSONAddressee.yaml
+  sender:
+    $ref: ./AcknowledgementJSONAddressee.yaml
+  transactions:
+    type: array
+    items:
+      $ref: ./AcknowledgementJSONTransaction.yaml
+    nullable: true
+  type:
+    type: string

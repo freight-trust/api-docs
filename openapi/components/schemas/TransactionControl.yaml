@@ -1,0 +1,64 @@
+required:
+  - title
+  - version
+type: object
+properties:
+  agencyCode:
+    description: Agency code of the standards body that defines the schema of this record
+    maxLength: 4
+    type: string
+  channelId:
+    description: 'Channel identifier. Required for new records, otherwise read-only'
+    type: string
+  createdAt:
+    allOf:
+      - $ref: ./OffsetDateTime.yaml
+      - description: Date and time the record was created
+        readOnly: true
+  industryCode:
+    description: Industry identifier (implementation version) of the standard
+    maxLength: 255
+    type: string
+  lastControlNumber:
+    format: int64
+    description: >-
+      The previous control number used for outbound data. Defaults to `0` for
+      new records.
+    type: integer
+  release:
+    description: Release (sub-version) of the standard
+    maxLength: 255
+    type: string
+  title:
+    title: Readable name for the record
+    maxLength: 255
+    pattern: \S
+    type: string
+    nullable: false
+  updatedAt:
+    allOf:
+      - $ref: ./OffsetDateTime.yaml
+      - description: Date and time the record was last updated
+        readOnly: true
+  uuid:
+    title: Unique system-generated identifier for the control record
+    type: string
+    readOnly: true
+  version:
+    description: Version of the standard
+    maxLength: 255
+    pattern: \S
+    type: string
+    nullable: false
+  groupControlId:
+    description: >-
+      Group control identifier. Required for new records directly tied to a
+      group control record, not used otherwise
+    type: string
+  interchangeControlId:
+    description: >-
+      Interchange control identifier. Required for new records directly tied to
+      an interchange control record, not used otherwise
+    type: string
+  type:
+    type: string

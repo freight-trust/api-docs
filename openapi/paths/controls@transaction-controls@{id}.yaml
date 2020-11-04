@@ -1,0 +1,37 @@
+get:
+  tags:
+    - Administration
+  summary: Retrieve a transaction control by ID
+  parameters:
+    - $ref: ../components/parameters/id.yaml
+  responses:
+    '200':
+      description: OK; Record retrieved
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/TransactionControl.yaml
+    '404':
+      $ref: ../components/responses/RecordNotFound.yaml
+put:
+  tags:
+    - Administration
+  summary: Update a transaction control
+  parameters:
+    - $ref: ../components/parameters/id.yaml
+  requestBody:
+    description: ''
+    content:
+      application/json:
+        schema:
+          $ref: ../components/schemas/TransactionControl.yaml
+    required: true
+  responses:
+    '200':
+      description: OK; Record updated
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/TransactionControl.yaml
+    '404':
+      $ref: ../components/responses/RecordNotFound.yaml
